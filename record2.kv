@@ -1,0 +1,1991 @@
+# KivyProject-DailyBlog
+#kv file for KivyProject.py
+
+Manager:
+
+    LogOn:
+    Pro1:
+
+
+<LogOn>:
+    name: "login"
+    lName: lName
+    lEDI: lEDI
+    notlog: notlog
+    pinp: pinp
+    
+    GridLayout:
+        cols: 2
+
+        GridLayout:
+            cols:1
+
+            GridLayout:
+                cols:2
+                    
+                Label:
+                    id: logname
+                    #pos_hint: {"x":0.87, "y":0.75}
+                    font_size: 40
+                    text: "Login Below"  
+
+
+ 
+            TextInput:
+                id: lName 
+                #pos_hint: {"x":.85, "y":.87}
+                size: 180,180
+                font_size: 20
+                hint_text: "Last Name"
+                multiline: False  
+                on_text_validate: lEDI.focus = True #hit enter for next line                    
+                
+                
+            TextInput:
+                id: lEDI 
+                #pos_hint: {"x":.85, "y":.87}
+                size: 180,180
+                font_size: 20
+                hint_text: "EDI"
+                multiline: False 
+                on_text_validate: pinp.focus = True                    
+                
+                
+                
+            TextInput:
+                id: pinp 
+                #pos_hint: {"x":.85, "y":.87}
+                size: 180,180
+                font_size: 20
+                hint_text: "CAC Pin"
+                multiline: False 
+                password: True
+                
+            Button:
+                id: butlog  
+                #on_release: root.ids.suck.text = root.test([])
+                background_color: (0.239, 0.729, 0.255)
+                font_size: 40
+                size: 180,180
+                pos_hint: {"x":1}
+                text: "Login"
+                on_release: root.logOne()
+
+                #on_release: app.root.current = "page1" ###########LOGIN#######3
+                
+            Button:
+                id: butcreate
+                #on_release: root.ids.suck.text = root.test([])
+                background_color: (0.824, 0.125, 0.125)
+                font_size: 40
+                size: 180,180
+                pos_hint: {"x":1}
+                text: "Create User"
+                
+                on_release: 
+                    app.root.current = "create"
+                    root.manager.transition.direction = "right"
+                
+            Label:
+                
+                id: notlog
+                #pos_hint: {"x":0.18, "y":0.75}
+                font_size: 20
+                text: "(Not Logged in)"                
+                    
+        Image:
+            id: profimg
+            source: "/home/covid2020/Desktop/Diary/Spider-Man.jpg"
+                
+        Label:
+            text_size: self.size
+            text: "Place Holder"
+            
+
+<CreateUser>:
+    name: "create"
+    
+    inputrank: inputrank
+    inputlast: inputlast
+    inputcac: inputcac 
+    inputedi: inputedi 
+    
+    logbuttt: logbuttt
+    logbutt: logbutt
+    
+    rank: rank 
+    success: success
+
+    
+    FloatLayout:
+        Label:
+            pos_hint: {"x": .001, "y": .45}
+            font_size: 40
+            text: "Create User Name"         
+        Label:
+            id: rank
+            pos_hint: {"x": -.40 ,"y": .30}
+            font_size: 40
+            text: "Rank:"   
+            
+        Label:
+            pos_hint: {"x": -.34 ,"y": .20}
+            font_size: 40
+            text: "Last Name:"  
+        Label:
+            pos_hint: {"x": -.37 ,"y": .10}
+            font_size: 40
+            text: "CAC Pin:"             
+        Label:
+            pos_hint: {"x": -.42 ,"y": 0}
+            font_size: 40
+            text: "EDI:" 
+        TextInput:
+            id: inputrank
+            pos_hint: {"x": .3, "y": .75}
+            size_hint: 0.5,0.09
+            font_size: 20
+            hint_text: "SSgt"
+            multiline: False     
+            on_text_validate: inputlast.focus = True                    
+         
+        TextInput:
+            id: inputlast 
+            pos_hint: {"x": .3, "y": .65}
+            size_hint: 0.5,0.09
+            font_size: 20
+            hint_text: "Snuffy"
+            multiline: False  
+            on_text_validate: inputcac.focus = True                    
+            
+                        
+        TextInput:
+            id: inputcac 
+            pos_hint: {"x": .3, "y": .55}
+            size_hint: 0.5,0.09
+            font_size: 20
+            hint_text: "CAC Pin"
+            multiline: False   
+            password: True   
+            on_text_validate: inputedi.focus = True                    
+
+              
+        TextInput:
+            id: inputedi
+            pos_hint: {"x": .3, "y": .45}
+            size_hint: 0.5,0.09
+            font_size: 20
+            hint_text: "EDI"
+            multiline: False           
+
+        Label:
+            id: success
+            pos_hint: {"x": -.05 ,"y": -.46}
+            font_size: 40
+            text: ""
+
+        Button:
+            id: logbutt
+            size_hint: 0.3,0.1
+            pos_hint: {"x": .4, "y":.3}
+            on_release: root.c_user()               
+            text: "Create"
+            
+        Button:
+            id: logbuttt
+            size_hint: 0.3,0.1
+            pos_hint: {"x": .4, "y":.2}
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "left"
+            text: "Login"
+
+
+
+
+            
+<Pro1>:
+    name: "page1"
+    
+    do_default_tab: False
+    tab_pos: "left"
+    GridLayout:
+        cols: 1
+        #size_hint_y: 10
+
+        GridLayout:
+            cols: 2
+            size_hint_x: 60
+
+            Button:
+                id: bullets  
+                background_color: (0.196, 0.176, 0.741)
+                font_size: 60
+                size: 180,180
+                pos_hint: {"x":1}
+                text: "Bullets"
+                on_release: 
+                    app.root.current = "bulll"
+                    root.manager.transition.direction = "down"
+
+
+            Button:
+                id: money   
+                #on_release: root.ids.suck.text = root.test([])
+                background_color: (0.239, 0.729, 0.255)
+                font_size: 55
+                size: 180,180
+                pos_hint: {"x":1}
+                text: "Money Manage"
+                on_release: 
+                    app.root.current = "mainmon"
+                    root.manager.transition.direction = "up"
+
+                
+                
+                
+            Button:
+                id: worko   
+                #on_release: root.ids.suck.text = root.test([])
+                background_color: (0.239, 0.729, 0.255)
+                font_size: 60
+                size: 180,180
+                pos_hint: {"x":1}
+                text: "Workout Log"
+                on_release: 
+                    app.root.current = "work"
+                    root.manager.transition.direction = "right"
+
+                
+                
+                
+            Button:
+                id: blog   
+                #on_release: root.ids.suck.text = root.test([])
+                background_color: (0.196, 0.176, 0.741)
+                font_size: 60
+                size: 180,180
+                pos_hint: {"x":1}
+                text: "Random blog"
+                on_release: 
+                    app.root.current = "blogg"
+                    root.manager.transition.direction = "left"
+
+
+        Button: 
+            id: blog   
+            #on_release: root.ids.suck.text = root.test([])
+            background_color: (0.969, 0.788, 0.063)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":1}
+            text: "Games" 
+            on_release:               
+                app.root.current = "gaymay"
+             
+        Button: 
+            id: blog   
+            #on_release: root.ids.suck.text = root.test([])
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":1}
+            text: "Log Out"
+            on_release: 
+                app.root.current = "login"
+                root.manager.transition.direction = "right"
+                root.logOut()
+
+
+
+
+<Bull>:
+    userislogged: userislogged
+    regFor: regFor
+    bullFor: bullFor
+
+    GridLayout:
+        cols: 1
+        GridLayout:
+            cols: 1
+            GridLayout:
+                cols: 1
+ 
+                Label:
+                    font_size: 40
+                    id: userislogged
+                    text: "Bullet Writing"  
+
+            TextInput:
+                id: regFor
+                size: 180,180
+                font_size: 20
+                hint_text: "Regular Formatting"
+                multiline: True 
+                            
+            TextInput:
+                id: bullFor 
+                size: 180,180
+                font_size: 20
+                text: ""
+                hint_text: "Bullet Format"
+                multiline: True   
+                #on_text:
+                #    if len(self.text.strip()) >=5: self.readonly = True
+
+        Button: 
+            id: bullsubb   
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":1}
+            text: "Submit Regular Bullet"
+            on_release: root.SubBullet()
+            #    app.root.current = "page1"
+            #    root.manager.transition.direction = "right"
+        Button: 
+            id: bullsub   
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":1}
+            text: "Submit Bullet Form"
+            on_release: 
+                root.SubBullet2()
+            #    root.manager.transition.direction = "right"
+                              
+        Button: ####GO BACK#
+            id: blog   
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":1}
+            text: "Go Back"
+            on_release: 
+                app.root.current = "page1"
+                root.manager.transition.direction = "right"
+
+
+<MonMain>:
+    GridLayout:
+        cols:1
+        Button:
+            font_size: 60
+
+            text: "PayCheck"
+            on_release: app.root.current = "paymon"
+            background_color: (0.224, 0.62, 0.318)
+
+        Button:
+            font_size: 60
+
+            text: "Monthly Spendings"
+            on_release: app.root.current = "mon"
+            background_color: (0.224, 0.62, 0.318)
+            
+        Button: ####GO BACK#
+            id: blog   
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            #size_hint_x: .2
+            #size_hint_y: .2
+            pos_hint: {"x":1}
+            text: "Go Back"
+            on_release: 
+                app.root.current = "page1"
+                root.manager.transition.direction = "right"
+
+<MonPay>:
+    noteamount:noteamount
+    saveamount:saveamount
+    payamount:payamount
+    paydate:paydate
+    display:display
+    
+    
+    GridLayout:
+        cols: 1
+        GridLayout:
+            cols:2
+            GridLayout:
+                cols: 1
+                        
+                Label:
+                    id: display
+                    pos_hint: {"x":0, "bottom":0 } #bottom left
+                    #text_size: cm(6), cm(4)
+                    font_size: 50
+                    size_hint_x: .3
+                    size_hint_y: .05
+                    halign: "center"
+                    text: "PayCheck Info"
+            GridLayout:
+                cols: 2
+            
+                Label:
+                    pos_hint: {"x":0, "bottom":0 } #bottom left
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    font_size: 20
+                    text: "Date of last paycheck"
+                TextInput:
+                    id: paydate
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    font_size: 20
+                    valign: "center"
+                    hint_text: "Feb 29, 2020"
+                    on_text_validate: payamount.focus = True                                        
+                    multiline: False
+
+
+                            
+                Label:
+                    pos_hint: {"x":0, "bottom":0 } #bottom left
+                    size_hint_x: .1
+                    size_hint_y: .1
+                    font_size: 20
+                    text: "Amount Paid"
+
+                TextInput: #price
+                    id: payamount
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: saveamount.focus = True 
+                    font_size: 20
+                    input_filter: "float"
+                    text: "0"
+                    hint_text: "1500.45 , no commas needed"
+                    multiline: False
+                            
+                Label:
+                    pos_hint: {"x":0, "bottom":0 } #bottom left
+                    size_hint_x: .1
+                    size_hint_y: .1
+                    font_size: 20
+                    text: "Amount put in savings"
+                TextInput:
+                    id: saveamount
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    font_size: 20
+                    input_filter: "float"
+                    text: "0"
+                    hint_text: "50.52,  no commas needed"
+                    on_text_validate: noteamount.focus = True                                        
+                    multiline: False
+                Label:
+                    pos_hint: {"x":0, "bottom":0 } #bottom left
+                    size_hint_x: .1
+                    size_hint_y: .1
+                    font_size: 20
+                    text: "Notes/Changes"
+                TextInput:
+                    id: noteamount
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    font_size: 20
+                    #input_filter: "float"
+                    hint_text: "Ex: I got a raise!"
+                    on_text_validate: payamount.focus = True                                        
+                    multiline: True                        
+
+        Button: ####GO BACK# 
+            
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 40
+            size_hint_x: .1
+            size_hint_y: .1
+            #size_hint: .5,.5 float
+            pos_hint: {"x":0, "bottom":0 } #bottom left
+            text: "Submit All"
+            on_release: root.entryall()
+            
+        Button: ####GO BACK# 
+            
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 40
+            size_hint_x: .1
+            size_hint_y: .1
+            #size_hint: .5,.5 float
+            pos_hint: {"x":0, "bottom":0 } #bottom left
+            text: "Get Savings To Date"
+            on_release: 
+                root.savingsall()
+                
+            
+ 
+        Button: ####GO BACK# 
+            
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 40
+            size_hint_x: .1
+            size_hint_y: .1
+            #size_hint: .5,.5 float
+            pos_hint: {"x":0, "bottom":0 } #bottom left
+            text: "Go Back"
+            on_release: 
+                app.root.current = "mainmon"
+                root.manager.transition.direction = "right"
+                root.gobackClear()
+     
+        
+<Mone>
+    price1: price1
+    price2: price2
+    price3: price3
+    price4: price4
+    price5: price5
+    price6: price6
+    price7: price7
+    price8: price8
+    price9: price9
+    price10: price10
+    
+    item1: item1
+    item2: item2
+    item3: item3
+    item4: item4
+    item5: item5
+    item6: item6
+    item7: item7
+    item8: item8       
+    item9: item9
+    item10: item10       
+    totall:totall
+    pover: pover
+    
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols: 1
+            GridLayout: #money inputs
+                cols:2
+                Label:
+                    pos_hint: {"x":0, "bottom":0 } #bottom left
+                    size_hint_x: .1
+                    size_hint_y: .1
+                    font_size: 20
+                    text: "Item"
+                Label:
+                    pos_hint: {"x":0, "bottom":0 } #bottom left
+                    size_hint_x: .1
+                    size_hint_y: .1
+                    font_size: 20
+                    text: "Price"
+                TextInput:
+                    id: item1
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    font_size: 20
+                    hint_text: "Item"
+                    on_text_validate: price1.focus = True                                        
+                    multiline: False
+                TextInput: #price
+                    id: price1
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item2.focus = True 
+                    font_size: 20
+                    input_filter: "float"
+                    text: "0"
+                    multiline: False
+                TextInput:
+                    id: item2
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: price2.focus = True 
+                    font_size: 20
+                    hint_text: "Item"
+                    multiline: False
+                TextInput:
+                    id: price2
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item3.focus = True 
+                    font_size: 20
+                    input_filter: "float"
+                    text: "0"
+                    multiline: False
+                TextInput:
+                    id: item3
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: price3.focus = True 
+                    font_size: 20
+                    hint_text: "Item"
+                    multiline: False
+                TextInput:
+                    id: price3
+                    size_hint_x: .3
+                    on_text_validate: item4.focus = True 
+                    size_hint_y: .3
+                    font_size: 20
+                    input_filter: "float"
+
+                    text: "0"
+                    multiline: False
+                TextInput:
+                    id: item4
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: price4.focus = True 
+                    font_size: 20
+                    hint_text: "Item"
+                    multiline: False
+                TextInput:
+                    id: price4
+                    size_hint_x: .3
+                    on_text_validate: item5.focus = True 
+                    size_hint_y: .3
+                    input_filter: "float"
+
+                    font_size: 20
+                    text: "0"
+                    multiline: False
+                TextInput:
+                    id: item5
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: price5.focus = True 
+                    font_size: 20
+                    hint_text: "Item"
+                    multiline: False
+                TextInput:
+                    id: price5
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    input_filter: "float"
+                    on_text_validate: item6.focus = True 
+                    font_size: 20
+                    text: "0"
+                    multiline: False         
+                TextInput:
+                    id: item6
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: price6.focus = True 
+                    font_size: 20
+                    hint_text: "Item"
+                    multiline: False
+                TextInput:
+                    id: price6
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    input_filter: "float"
+                    on_text_validate: item7.focus = True 
+                    font_size: 20
+                    text: "0"
+                    multiline: False         
+                TextInput:
+                    id: item7
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: price7.focus = True 
+                    font_size: 20
+                    hint_text: "Item"
+                    multiline: False
+                TextInput:
+                    id: price7
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    input_filter: "float"
+                    on_text_validate: item8.focus = True 
+                    font_size: 20
+                    text: "0"
+                    multiline: False         
+                TextInput:
+                    id: item8
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: price8.focus = True 
+                    font_size: 20
+                    hint_text: "Item"
+                    multiline: False
+                TextInput:
+                    id: price8
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item9.focus = True 
+                    input_filter: "float"
+                    font_size: 20
+                    text: "0"
+                    multiline: False         
+                TextInput:
+                    id: item9
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: price9.focus = True 
+                    font_size: 20
+                    hint_text: "Item"
+                    multiline: False
+                TextInput:
+                    id: price9
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item10.focus = True 
+                    input_filter: "float"
+                    font_size: 20
+                    text: "0"
+                    multiline: False         
+                TextInput:
+                    id: item10
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: price10.focus = True 
+                    font_size: 20
+                    hint_text: "Item"
+                    multiline: False
+                TextInput:
+                    id: price10
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    input_filter: "float"
+                    font_size: 20
+                    text: "0"
+                    multiline: False         
+         
+         
+         
+         
+         
+            TextInput:
+                id: pover
+                size_hint_x: .1
+                size_hint_y: .1
+                input_filter: "float"
+                font_size: 20
+                halign: "center"
+                disabled: True
+                hint_text: "Total"
+                multiline: False          
+
+            Button:
+                id: totall
+                background_color: (0.098, 0.231, 0.769)
+                font_size: 60
+                size_hint_x: .2
+                size_hint_y: .2
+                #size_hint: .5,.5 float
+                pos_hint: {"x":0, "bottom":0 } #bottom left
+                text: "Get Total"
+                on_release: root.Over()
+                
+            Button:
+                background_color: (0.098, 0.231, 0.769)
+                font_size: 60
+                size_hint_x: .2
+                size_hint_y: .2
+                #size_hint: .5,.5 float
+                pos_hint: {"x":0, "bottom":0 } #bottom left
+                text: "Submit To Records"
+                on_release: root.SubMoney()
+            
+        Button: ####GO BACK# 
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .1
+            size_hint_y: .1
+            #size_hint: .5,.5 float
+            pos_hint: {"x":0, "bottom":0 } #bottom left
+            text: "Go Back"
+            on_release: 
+                app.root.current = "mainmon"
+                root.manager.transition.direction = "right"
+
+
+     
+        
+<WorkoutMain>
+    GridLayout:
+        cols: 1
+
+   
+        Button: 
+            id: workblog   
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size: 80,80
+            pos_hint: {"x":1}
+            text: "Log Workout"  
+            on_release: app.root.current = "wrkb"   
+                   
+        Button: 
+            id: workidea   
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size: 80,80
+            pos_hint: {"x":1}
+            text: "Basic Workout Ideas"            
+            on_release: app.root.current = "wrkid"   
+
+
+
+
+        Button: ####GO BACK#
+            id: blog   
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2
+            size: 80,80
+            pos_hint: {"x":1}
+            text: "Go Back"
+            on_release: 
+                app.root.current = "page1"
+                root.manager.transition.direction = "right"
+        
+
+<WorkBlog>:
+    blogtext: blogtext
+    
+    
+    GridLayout:
+        cols:1
+        Label:
+            font_size: 40
+            id: blogwork
+            text: "Use This Space to log your workouts :D"  
+
+        TextInput:
+            id: blogtext
+            size: 180,180
+            font_size: 20
+            hint_text: "6 sets or push ups, 30 sits ups, etc..."
+            multiline: True
+            
+        Button: 
+            
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2
+            size: 80,80
+            pos_hint: {"x":1}
+            text: "Submit Workout"
+            on_release: root.loginfo()
+            
+        Button: ####GO BACK#
+              
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2
+            size: 80,80
+            pos_hint: {"x":1}
+            text: "Go Back"
+            on_release: app.root.current = "work"
+
+
+<WorkIdea>:
+    runit:runit
+    abwork:abwork
+    pushit:pushit
+    setset:setset
+
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:4
+            Label:
+                
+                pos_hint: {"x":0, "bottom":0 } #bottom left
+                #text_size: cm(6), cm(4)
+                font_size: 30
+                #size_hint_x: .3
+                #size_hint_y: .05
+                halign: "center"
+                text: "Sets"
+                
+            Label:
+                
+                pos_hint: {"x":0, "bottom":0 } #bottom left
+                #text_size: cm(6), cm(4)
+                font_size: 30
+                #size_hint_x: .3
+                #size_hint_y: .05
+                halign: "center"
+                text: "Push/Sit/Squat"
+                
+            Label:
+                
+                pos_hint: {"x":0, "bottom":0 } #bottom left
+                #text_size: cm(6), cm(4)
+                font_size: 30
+                #size_hint_x: .3
+                #size_hint_y: .05
+                halign: "center"
+                text: "Abs"
+                
+            Label:
+                
+                pos_hint: {"x":0, "bottom":0 } #bottom left
+                #text_size: cm(6), cm(4)
+                font_size: 30
+                #size_hint_x: .3
+                #size_hint_y: .05
+                halign: "center"
+                text: "Run"
+                
+            TextInput:
+                id: setset
+                #size_hint_x: .1
+                #size_hint_y: .1
+                font_size: 20
+                halign: "center"
+                disabled: True
+                text: "Total1"
+                multiline: False 
+
+            TextInput:
+                id: pushit
+                #size_hint_x: .1
+                #size_hint_y: .1
+                font_size: 20
+                #self.size
+                halign: "center"
+                disabled: True
+                text: "Total2"
+                multiline: True 
+                
+            TextInput:
+                id: abwork
+                #size_hint_x: .1
+                #size_hint_y: .1
+                font_size: 20
+                halign: "center"
+                disabled: True
+                text: "Total3"
+                multiline: False 
+                
+            TextInput:
+                id: runit
+                #size_hint_x: .1
+                #size_hint_y: .1
+                font_size: 20
+                halign: "center"
+                disabled: True
+                text: "Total4"
+                multiline: False                 
+                
+                
+        Button: 
+            id: blog   
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2
+            size: 80,80
+            pos_hint: {"x":1}
+            text: "Click to Get Fit!!"
+            on_release: root.GetFit()
+                   
+        Button: 
+            id: blog   
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2
+            size: 80,80
+            pos_hint: {"x":1}
+            text: "Submit Workout"
+            on_release: root.loginfo()
+
+        Button: ####GO BACK#
+            id: blog   
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2
+            size: 80,80
+            pos_hint: {"x":1}
+            text: "Go Back"
+            on_release: app.root.current = "work"
+
+
+<Blogger>
+    bloginput: bloginput
+    GridLayout:
+        cols: 1
+
+        TextInput:
+            id: bloginput
+            hint_text: "Write anything :D How you feelin' today"
+
+
+        Button:
+            id: blog   
+            background_color: (0.196, 0.176, 0.741)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2            
+            size: 80,80
+            pos_hint: {"x":.18}
+            text: "Submit"
+            on_release: root.randblog()
+
+        Button: ####GO BACK#
+            id: blog   
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2            
+            size: 80,80
+            pos_hint: {"x":1}
+            text: "Go Back"
+            on_release: 
+                app.root.current = "page1"
+                root.manager.transition.direction = "right"
+
+
+<GamesMain>:
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols: 2
+            Button: 
+                id: blog   
+                background_color: (0.855, 0.431, 0.431)
+                font_size: 30
+                size: 80,80
+                pos_hint: {"x":1}
+                text: "Hoe Type Generator"
+                on_release:
+                    app.root.current = "hoe"
+
+            Button: ####GO BACK#
+                id: blog   
+                background_color: (0, 1, 0.671)
+                font_size: 30
+                size: 80,80
+                pos_hint: {"x":1}
+                text: "Rock, Paper, Scissors"
+                on_release:
+                    app.root.current = "grock"
+                
+            Button: ####GO BACK#
+                id: blog   
+                background_color: (0.969, 0.788, 0.063)
+                font_size: 30
+                size: 80,80
+                pos_hint: {"x":1}
+                text: "Hangman"    
+                on_release: app.root.current = "hanger" 
+                
+            Button: ####GO BACK#
+                id: blog   
+                background_color: (00.671, 0, 1)
+                font_size: 30
+                size: 80,80
+                pos_hint: {"x":1}
+                text: "Mad Libs"  
+                on_release:
+                    app.root.current = "madmain"       
+
+
+        Button: ####GO BACK#
+            id: blog   
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":1}
+            text: "Go Back"
+            on_release: 
+                app.root.current = "page1"
+                root.manager.transition.direction = "right"
+
+<GameHoe>:
+    spice: spice
+    colur: colur
+    hoebutt:hoebutt
+    cloth: cloth
+    lips: lips
+    rees: rees
+
+    FloatLayout:
+        #orientation: 'vertical'
+        #size: root.width, root.height
+
+
+
+            
+        Label:
+            id: banner
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.43, "y":.8}
+            text: 'Hoe Type Generator 2.0'
+            font_size: 30
+            
+        Label:
+            id: banner
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.43, "y":.6}
+            text: 'Which type of Hoe are you?'
+            font_size: 30
+            
+        Spinner: 
+            id: spice 
+            background_color: (1, 0, 0.804)
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.1, "y":.45}
+            text: "Choose a spice"
+            values: "Cayenne", "Nutmeg", "Cinnamon"
+            
+            on_text: root.Spice(spice.text)
+
+        Spinner: 
+            id: colur 
+            background_color: (1, 0, 0.804)
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.3, "y":.45}
+            text: "Choose a color"
+            values: "red", "blue", "pink", "black"
+            
+            on_text: root.Colorr(colur.text) 
+
+        Spinner: 
+            id: cloth 
+            background_color: (1, 0, 0.804)
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.5, "y":.45}
+            text: "Clothing?"
+            values: "panties", "bra", "nothing"                   
+
+            on_text: root.Cloths(cloth.text) 
+
+        Spinner: 
+            id: lips 
+            background_color: (1, 0, 0.804)
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.7, "y":.45}
+            text: "Chapped Lips"
+            values: "lip gloss", "chapstick", "lipstick"                   
+
+            on_text: root.Lip(cloth.text) 
+            
+        Label:
+            id: rees 
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.40, "y":.24}
+            text: ''
+            font_size: 50            
+            
+            
+
+        Button: ####GO BACK#
+            id: hoebutt  
+            #background_color: (0.969, 0.788, 0.063)
+            font_size: 30
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.40}
+            text: "Get Results"  
+            on_release: root.OverAll()
+
+        Button: ####GO BACK#
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 30
+            size_hint_x: .2
+            size_hint_y: .1
+            pos_hint: {"x":.01, "y":.9}
+            text: "Go Back"
+            on_release: 
+                app.root.current = "gaymay"
+
+
+<GameRock>
+    weap: weap 
+    res: res 
+    cpu: cpu 
+    numscore: numscore
+    drawscore: drawscore
+    cpuscore:cpuscore
+    
+    FloatLayout:
+        
+        
+        
+        Label:
+            color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.43, "y":.85}
+            text: 'Rock, Paper...Sciccors?'
+            font_size: 50 
+        Label:
+            color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.45, "y":.80}
+            text: 'First to 5 points!'
+            font_size: 20            
+            
+            
+        Label:
+            #color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.38, "y":.75}
+            text: 'Draw: '
+            font_size: 30 
+        Label:
+            id: drawscore
+            #color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.45, "y":.75}
+            text: '0'
+            font_size: 30 
+            
+        Label:
+            #color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.05, "y":.65}
+            text: 'Your Score: '
+            font_size: 30 
+        Label:
+            id: numscore
+            #color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.17, "y":.65}
+            text: '0'
+            font_size: 30 
+
+        Label:            
+            #color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.75, "y":.65}
+            text: 'CPU Score: '
+            font_size: 30 
+        Label:
+            id: cpuscore
+            #color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.87, "y":.65}
+            text: '0'
+            font_size: 30 
+            
+            
+        Spinner: 
+            id: weap  
+            background_color: (0, 0.773, 0.965)
+            font_size: 24
+            size_hint_x: .3
+            size_hint_y: .2
+            pos_hint: {"x":.05, "y":.45}
+            text: "Choose your Weapon!"
+            values: "Rock", "Paper", "Scissor"
+            
+
+        Button:
+            id: cpu 
+            background_color: (0,0,0)
+            font_size: 20
+            size_hint_x: .3
+            size_hint_y: .2
+            pos_hint: {"x":.7, "y":.45}
+            text: "Bee, Boop, Am CPU"
+            
+        Label:
+            id: res
+            color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.4, "y":.45}
+            text: ''
+            font_size: 30 
+    
+    
+        Button: ####        PLAY
+            background_color: (0.2, 0.847, 0.157)
+            font_size: 30
+            size_hint_x: .2
+            size_hint_y: .1
+            pos_hint: {"x":.40, "y":.20}
+            text: ">>Play<<"  
+            on_release:
+                root.RPS(weap.text)  
+            
+            
+        Button: ####        RESET
+            background_color: (0.573, 0.098, 0.098)
+            font_size: 30
+            size_hint_x: .2
+            size_hint_y: .1
+            pos_hint: {"x":.40, "y":.10}
+            text: ">>Reset<<"   
+            on_release:
+                root.Resett() 
+    
+    
+    
+        Button: ####GO BACK#
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 30
+            size_hint_x: .2
+            size_hint_y: .1
+            pos_hint: {"x":.01, "y":.9}
+            text: "Go Back"
+            on_release: 
+                app.root.current = "gaymay"
+  
+<MadLibMain>:
+    GridLayout:
+        cols:1
+        Button:
+            id: blog   
+            background_color: (1, 0, 1)
+            font_size: 30
+            size: 80,80
+            pos_hint: {"x":1}
+            text: "MadLib 1"
+            on_release:
+                app.root.current = "mad"     
+        Button:
+            id: blog   
+            background_color: (1, 0, 1)
+            font_size: 30
+            size: 80,80
+            pos_hint: {"x":1}
+            text: "MadLib 2"
+            on_release:
+                app.root.current = "mad2"     
+        Button:
+            id: blog   
+            background_color: (1, 0, 1)
+            font_size: 30
+            size: 80,80
+            pos_hint: {"x":1}
+            text: "MadLib 3"
+            on_release:
+                app.root.current = "mad3"     
+
+                
+                
+<MadLib1>:
+    item1:item1
+    item2:item2
+    item3:item3
+    item4:item4
+    item5:item5
+    item6:item6
+    item7:item7
+    item8:item8
+    item9:item9
+    item10:item10
+    
+    storyy:storyy
+    storybutt: storybutt
+    
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols: 1
+            GridLayout: #money inputs
+                cols:2              
+                TextInput:
+                    id: item1
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    font_size: 20
+                    hint_text: "Name a place to shop"
+                    on_text_validate: item2.focus = True                                        
+                    multiline: False
+                TextInput:
+                    id: item2
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item3.focus = True 
+                    font_size: 20
+                    hint_text: "Day of the week"
+                    multiline: False
+                TextInput:
+                    id: item3
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item4.focus = True 
+                    font_size: 20
+                    hint_text: "Type of animal"
+                    multiline: False
+                TextInput:
+                    id: item4
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item5.focus = True 
+                    font_size: 20
+                    hint_text: "Choose: his/her"
+                    multiline: False
+                TextInput:
+                    id: item5
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item6.focus = True 
+                    font_size: 20
+                    hint_text: "A name"
+                    multiline: False
+                TextInput:
+                    id: item6
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item7.focus = True 
+                    font_size: 20
+                    hint_text: "Number between 3 and 10"
+                    multiline: False
+                TextInput:
+                    id: item7
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item8.focus = True 
+                    font_size: 20
+                    hint_text: "Job type"
+                    multiline: False
+                TextInput:
+                    id: item8
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item9.focus = True 
+                    font_size: 20
+                    hint_text: "A Food"
+                    multiline: False
+                TextInput:
+                    id: item9
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item10.focus = True 
+                    font_size: 20
+                    hint_text: "Place to eat"
+                    multiline: False
+                TextInput:
+                    id: item10
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    #on_text_validate: price10.focus = True 
+                    font_size: 20
+                    hint_text: "Different Animal"
+                    multiline: False
+            GridLayout:
+                cols: 1
+                TextInput:
+                    id: storyy
+                    size_hint_x: .6
+                    size_hint_y: .6
+                    halign: "center"
+                    disabled: True
+                    font_size: 15
+                    text: "Your Story"
+                    multiline: True 
+
+         
+              
+            Button:
+                id: storybutt
+                background_color: (1, 0, 1)
+                font_size: 50
+                size_hint_x: .2
+                size_hint_y: .2
+                #size_hint: .5,.5 float
+                pos_hint: {"x":0, "bottom":0 } #bottom left
+                text: "Get Story"
+                on_release: root.GetStory()
+            Button:
+                #id: storybutt
+                background_color: (1, 0, 1)
+                font_size: 50
+                size_hint_x: .2
+                size_hint_y: .2
+                #size_hint: .5,.5 float
+                pos_hint: {"x":0, "bottom":0 } #bottom left
+                text: "Reset"
+                on_release: root.RERE()
+                
+
+
+            
+        Button: ####GO BACK# 
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .1
+            size_hint_y: .1
+            #size_hint: .5,.5 float
+            pos_hint: {"x":0, "bottom":0 } #bottom left
+            text: "Go Back"
+            on_release: 
+                app.root.current = "gaymay"
+                root.manager.transition.direction = "down"
+
+<MadLib2>:
+    item1:item1
+    item2:item2
+    item3:item3
+    item4:item4
+    item5:item5
+    item6:item6
+    item7:item7
+    item8:item8
+    item9:item9
+    item10:item10
+    
+    storyy:storyy
+    storybutt: storybutt
+    
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols: 1
+            GridLayout: #money inputs
+                cols:2              
+                TextInput:
+                    id: item1
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    font_size: 20
+                    hint_text: "Name a place to shop"
+                    on_text_validate: item2.focus = True                                        
+                    multiline: False
+                TextInput:
+                    id: item2
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item3.focus = True 
+                    font_size: 20
+                    hint_text: "Day of the week"
+                    multiline: False
+                TextInput:
+                    id: item3
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item4.focus = True 
+                    font_size: 20
+                    hint_text: "Type of animal"
+                    multiline: False
+                TextInput:
+                    id: item4
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item5.focus = True 
+                    font_size: 20
+                    hint_text: "Choose: his/her"
+                    multiline: False
+                TextInput:
+                    id: item5
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item6.focus = True 
+                    font_size: 20
+                    hint_text: "A name"
+                    multiline: False
+                TextInput:
+                    id: item6
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item7.focus = True 
+                    font_size: 20
+                    hint_text: "Number between 3 and 10"
+                    multiline: False
+                TextInput:
+                    id: item7
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item8.focus = True 
+                    font_size: 20
+                    hint_text: "Job type"
+                    multiline: False
+                TextInput:
+                    id: item8
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item9.focus = True 
+                    font_size: 20
+                    hint_text: "A Food"
+                    multiline: False
+                TextInput:
+                    id: item9
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item10.focus = True 
+                    font_size: 20
+                    hint_text: "Place to eat"
+                    multiline: False
+                TextInput:
+                    id: item10
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    #on_text_validate: price10.focus = True 
+                    font_size: 20
+                    hint_text: "Different Animal"
+                    multiline: False
+            GridLayout:
+                cols: 1
+                TextInput:
+                    id: storyy
+                    size_hint_x: .6
+                    size_hint_y: .6
+                    halign: "center"
+                    disabled: True
+                    font_size: 15
+                    text: "Your Story"
+                    multiline: True 
+
+         
+              
+            Button:
+                id: storybutt
+                background_color: (1, 0, 1)
+                font_size: 50
+                size_hint_x: .2
+                size_hint_y: .2
+                #size_hint: .5,.5 float
+                pos_hint: {"x":0, "bottom":0 } #bottom left
+                text: "Get Story"
+                on_release: root.GetStory()
+            Button:
+                #id: storybutt
+                background_color: (1, 0, 1)
+                font_size: 50
+                size_hint_x: .2
+                size_hint_y: .2
+                #size_hint: .5,.5 float
+                pos_hint: {"x":0, "bottom":0 } #bottom left
+                text: "Reset"
+                on_release: root.RERE()
+                
+
+
+            
+        Button: ####GO BACK# 
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .1
+            size_hint_y: .1
+            #size_hint: .5,.5 float
+            pos_hint: {"x":0, "bottom":0 } #bottom left
+            text: "Go Back"
+            on_release: 
+                app.root.current = "gaymay"
+                root.manager.transition.direction = "down"
+
+
+<MadLib3>:
+    item1:item1
+    item2:item2
+    item3:item3
+    item4:item4
+    item5:item5
+    item6:item6
+    item7:item7
+    item8:item8
+    item9:item9
+    item10:item10
+    
+    storyy:storyy
+    storybutt: storybutt
+    
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols: 1
+            GridLayout: #money inputs
+                cols:2              
+                TextInput:
+                    id: item1
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    font_size: 20
+                    hint_text: "Name a place to shop"
+                    on_text_validate: item2.focus = True                                        
+                    multiline: False
+                TextInput:
+                    id: item2
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item3.focus = True 
+                    font_size: 20
+                    hint_text: "Day of the week"
+                    multiline: False
+                TextInput:
+                    id: item3
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item4.focus = True 
+                    font_size: 20
+                    hint_text: "Type of animal"
+                    multiline: False
+                TextInput:
+                    id: item4
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item5.focus = True 
+                    font_size: 20
+                    hint_text: "Choose: his/her"
+                    multiline: False
+                TextInput:
+                    id: item5
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item6.focus = True 
+                    font_size: 20
+                    hint_text: "A name"
+                    multiline: False
+                TextInput:
+                    id: item6
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item7.focus = True 
+                    font_size: 20
+                    hint_text: "Number between 3 and 10"
+                    multiline: False
+                TextInput:
+                    id: item7
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item8.focus = True 
+                    font_size: 20
+                    hint_text: "Job type"
+                    multiline: False
+                TextInput:
+                    id: item8
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item9.focus = True 
+                    font_size: 20
+                    hint_text: "A Food"
+                    multiline: False
+                TextInput:
+                    id: item9
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    on_text_validate: item10.focus = True 
+                    font_size: 20
+                    hint_text: "Place to eat"
+                    multiline: False
+                TextInput:
+                    id: item10
+                    size_hint_x: .3
+                    size_hint_y: .3
+                    #on_text_validate: price10.focus = True 
+                    font_size: 20
+                    hint_text: "Different Animal"
+                    multiline: False
+            GridLayout:
+                cols: 1
+                TextInput:
+                    id: storyy
+                    size_hint_x: .6
+                    size_hint_y: .6
+                    halign: "center"
+                    disabled: True
+                    font_size: 15
+                    text: "Your Story"
+                    multiline: True 
+
+         
+              
+            Button:
+                id: storybutt
+                background_color: (1, 0, 1)
+                font_size: 50
+                size_hint_x: .2
+                size_hint_y: .2
+                #size_hint: .5,.5 float
+                pos_hint: {"x":0, "bottom":0 } #bottom left
+                text: "Get Story"
+                on_release: root.GetStory()
+            Button:
+                #id: storybutt
+                background_color: (1, 0, 1)
+                font_size: 50
+                size_hint_x: .2
+                size_hint_y: .2
+                #size_hint: .5,.5 float
+                pos_hint: {"x":0, "bottom":0 } #bottom left
+                text: "Reset"
+                on_release: root.RERE()
+                
+
+
+            
+        Button: ####GO BACK# 
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 60
+            size_hint_x: .1
+            size_hint_y: .1
+            #size_hint: .5,.5 float
+            pos_hint: {"x":0, "bottom":0 } #bottom left
+            text: "Go Back"
+            on_release: 
+                app.root.current = "gaymay"
+                root.manager.transition.direction = "down"
+
+<HangDude>:
+    uIknow: uIknow
+    uLetGess:uLetGess
+    uGuess:uGuess
+    theWord: theWord
+    manyLet: manyLet
+
+    FloatLayout:
+        cols:2
+        
+        Label:
+            color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.43, "y":.85}
+            text: 'Hang. Man?'
+            font_size: 50 
+            
+        Label:
+            id: manyLet
+            color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.52, "y":.73}
+            text: '0'
+            font_size: 35
+
+        Label:
+            color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.23, "y":.70}
+            text: 'Mystery Word Has this many letters____'
+            font_size: 30 
+
+        Label:
+            id: theWord
+            color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.43, "y":.55}
+            text: '______'
+            font_size: 60         
+        
+          
+        TextInput:
+            id: uGuess
+            size_hint_x: .3
+            size_hint_y: .1
+            font_size: 20
+            halign: "center"
+            pos_hint: {"x":.4, "y":.2}
+            hint_text: "type one letter guess"
+            multiline: False 
+            
+            
+        TextInput:
+            id: uIknow
+            size_hint_x: .3
+            size_hint_y: .1
+            font_size: 20
+            halign: "center"
+            #disabled: True
+            pos_hint: {"x":.4, "y":.08}
+            hint_text: "Click here to guess full word"
+            multiline: True 
+        Button: 
+            #id: uKnowit
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 25
+            size_hint_x: .1
+            size_hint_y: .1
+            pos_hint: {"x":.70, "y":.08}
+            text: "Submit"  
+            on_release: root.SubmitAns(uIknow)
+            
+        Label:
+            color: 68,0,255,1 # <-----------
+            size_hint_x: .2
+            size_hint_y: .2
+            pos_hint: {"x":.8, "y":.73}
+            text: 'Letters Guessed'
+            font_size: 20
+    
+        TextInput:
+            id: uLetGess
+            size_hint_x: .3
+            size_hint_y: .6
+            disabled: True
+            font_size: 20
+            #halign: "center"
+            pos_hint: {"x":.8, "y":.2}
+            hint_text: "Letters Guessed"
+            multiline: True 
+
+        Button: 
+            id: uButt
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 25
+            size_hint_x: .1
+            size_hint_y: .1
+            pos_hint: {"x":.70, "y":.2}
+            text: "Guess"
+            on_release: root.GamePlay()
+        
+      
+            
+        Button: ####GO BACK#
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 30
+            size_hint_x: .2
+            size_hint_y: .1
+            pos_hint: {"x":.0, "y":.9}
+            text: "Go Back"
+            on_release: 
+                app.root.current = "gaymay"
+        
+        
+        Button:
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 30
+            size_hint_x: .2
+            size_hint_y: .1
+            pos_hint: {"x":.80, "y":.9}
+            text: "New Word"
+            on_release: root.NewWord()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
