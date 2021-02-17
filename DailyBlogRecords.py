@@ -40,7 +40,7 @@ class LogOn(Screen):
     
     def logOne(self):
         global user
-        path = os.getcwd() + "/DayJourn/"
+        path = os.getcwd()
 
         user = path + self.lName.text + "." + self.lEDI.text  + "/Profile." + self.lName.text + "." + self.lEDI.text + ".docx"
         userdir = path + self.lName.text + "." + self.lEDI.text 
@@ -983,7 +983,7 @@ class HangDude(Screen):
     #self.uIknow.text = "Click here to guess full word"
     #self.uGuess.text = "One Letter Guess"
     d = os.getcwd()
-    with open(d + '/DayJourn/AnimalsHang.txt', 'r') as file:
+    with open(d + '/AnimalsHang.txt', 'r') as file:
     
         insdiefile = file.read()
         secret = list(map(str, insdiefile.split())) 
@@ -1015,7 +1015,7 @@ class HangDude(Screen):
         HangRules()
         d = os.getcwd()
   
-        file = open(d + '/DayJourn/AnimalsHang.txt', 'r')
+        file = open(d + '/AnimalsHang.txt', 'r')
     
         insdiefile = file.read()
         secret = list(map(str, insdiefile.split())) 
