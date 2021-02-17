@@ -15,7 +15,7 @@ import webbrowser
 import subprocess
 
 
-
+global path
 
 date = str(datetime.date(datetime.now()))
 time = str(datetime.time(datetime.now()))
@@ -40,12 +40,16 @@ class LogOn(Screen):
     
     def logOne(self):
         global user
+        path = os.getcwd() + "/DayJourn/"
+
         user = path + self.lName.text + "." + self.lEDI.text  + "/Profile." + self.lName.text + "." + self.lEDI.text + ".docx"
         userdir = path + self.lName.text + "." + self.lEDI.text 
         #path = os.getcwd()
-
-
+        print(path)
+        print(user)
+        
         if os.path.exists(user):
+            
             with open(user) as search:
                 if self.pinp.text in search.read():
                     #self.notlog.text = "Login Complete"
@@ -74,6 +78,7 @@ class CreateUser(Screen):
 
   
     def c_user(self):
+        path = os.getcwd() + "/"
         userdir = path + self.inputlast.text + "." + self.inputedi.text 
         user = path + self.inputlast.text + "." + self.inputedi.text  + "/Profile." + self.inputlast.text + "." + self.inputedi.text + ".docx"
 
@@ -957,7 +962,7 @@ class MadLib3(Screen):
 
 
 class HangDude(Screen):
-    ...                      
+                         
     #hanglist = AnimalsHang.Animlist
     uLetGess = ObjectProperty(None)   #lettersGuess box       
     uIknow = ObjectProperty(None)    #guess full word
@@ -972,11 +977,13 @@ class HangDude(Screen):
     global tries
     global amount
     global secret
+    global path
 
     #self.uLetGess.text = ""
     #self.uIknow.text = "Click here to guess full word"
     #self.uGuess.text = "One Letter Guess"
-    with open('/home/covid2020/Desktop/Diary2/AnimalsHang.txt', 'r') as file:
+    d = os.getcwd()
+    with open(d + '/DayJourn/AnimalsHang.txt', 'r') as file:
     
         insdiefile = file.read()
         secret = list(map(str, insdiefile.split())) 
@@ -1006,8 +1013,9 @@ class HangDude(Screen):
         global secret 
         
         HangRules()
-        
-        file = open('/home/covid2020/Desktop/Diary2/AnimalsHang.txt', 'r')
+        d = os.getcwd()
+  
+        file = open(d + '/DayJourn/AnimalsHang.txt', 'r')
     
         insdiefile = file.read()
         secret = list(map(str, insdiefile.split())) 
