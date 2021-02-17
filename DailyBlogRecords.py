@@ -40,7 +40,7 @@ class LogOn(Screen):
     
     def logOne(self):
         global user
-        path = os.getcwd()
+        path = os.getcwd() + "/"
 
         user = path + self.lName.text + "." + self.lEDI.text  + "/Profile." + self.lName.text + "." + self.lEDI.text + ".docx"
         userdir = path + self.lName.text + "." + self.lEDI.text 
