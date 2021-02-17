@@ -1,6 +1,3 @@
-# KivyProject-DailyBlog
-#kv file for KivyProject.py
-
 Manager:
 
     LogOn:
@@ -93,9 +90,6 @@ Manager:
                 font_size: 20
                 text: "(Not Logged in)"                
                     
-        Image:
-            id: profimg
-            source: ""
                 
         Label:
             text_size: self.size
@@ -283,7 +277,19 @@ Manager:
             text: "Games" 
             on_release:               
                 app.root.current = "gaymay"
-             
+        #Button: 
+        #    #id: blog   
+#            #on_release: root.ids.suck.text = root.test([])
+ #           background_color: (0.2, 0.875, 0.718)
+  #          font_size: 60
+   #         size_hint_x: .2
+    #        size_hint_y: .2
+     #       pos_hint: {"x":1}
+      #      text: "Files/ETC" 
+       #     on_release:               
+        #        app.root.current = "files"
+
+                
         Button: 
             id: blog   
             #on_release: root.ids.suck.text = root.test([])
@@ -1961,6 +1967,37 @@ Manager:
             on_release: root.NewWord()
 
 
+
+<FilesETC>:
+    GridLayout:
+        cols: 2
+        Label:
+            text: "Files"
+        Button: ####GO BACK# 
+            
+            background_color: (0.922, 0.098, 0.098)
+            font_size: 40
+            #size_hint_x: .1
+            #size_hint_y: .1
+            #size_hint: .5,.5 float
+            #pos_hint: {"x":0, "bottom":0 } #bottom left
+            text: "This Google"
+            on_release: root.Goog()
+
+        Label:
+            id: display
+            #pos_hint: {"x":0, "bottom":0 } #bottom left
+            #text_size: cm(6), cm(4)
+            font_size: 50
+            #size_hint_x: .3
+            #size_hint_y: .05
+            halign: "center"
+            text: "Info"
+
+        #FileChooserListView:
+         #   id: read
+          #  path: "/home/covid2020/Desktop/Diary2/"
+            #on_selection: app.root.ReadLookup(read.selection)
 
 
 
